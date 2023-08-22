@@ -1,0 +1,109 @@
+.welcome-page {
+  min-height: 100vh;
+  height: 100%;
+  .wrap {
+    .wrap-box {
+      width: 554px;
+      min-height: 410px;
+      padding: 60px 30px;
+      border-radius: 10px;
+      background: #faf8f4;
+      @include media("<=phoneH") {
+        width: 100%;
+        margin: 0 12px;
+      }
+      .box-title {
+        color: #121212;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 60px;
+        text-align: center;
+      }
+      .box-desc {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 140.02%;
+        text-align: center;
+        margin: 20px 0;
+        color: #121212;
+      }
+      .wrap-block {
+        grid-gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include media("<=phoneH") {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .option-box {
+          width: 100%;
+          height: 170px;
+          padding: 20px;
+          border-radius: 10px;
+          background: #ffffff;
+          border: 1.6px solid #121212;
+          @include anim;
+          cursor: pointer;
+          .icon {
+            width: 40px;
+            height: 40px;
+            background: #faf8f4;
+            border: 1.6px solid #000000;
+            border-radius: 6px;
+          }
+          .box-title {
+            margin-top: 26px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 19px;
+            text-align: center;
+            color: #5050ff;
+          }
+          &:hover {
+            background: #202021;
+          }
+          &.active {
+            background: #202021;
+          }
+        }
+      }
+      .action {
+        .action-title {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140.02%;
+          text-align: center;
+          color: #121212;
+          margin-top: 26px;
+        }
+        .txt {
+          padding: 12px 10px;
+          background: #f5f5f7;
+          border: 1px solid #000000;
+          border-radius: 8px;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          margin-top: 26px;
+          &:focus {
+            border-color: #5050ff;
+          }
+        }
+        .btn-connect {
+          width: 100%;
+          margin-top: 26px;
+          border-radius: 8px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

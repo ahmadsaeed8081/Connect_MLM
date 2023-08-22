@@ -1,0 +1,63 @@
+// Header
+.header-camp {
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 90px;
+  padding: 12px 0px;
+  position: relative;
+  border-bottom: 1px solid #202021;
+  background: #202021;
+  .wrap {
+    @media only screen and (max-width: 480px) and (min-width: 320px) {
+    }
+    .left {
+      flex: 0.3;
+    }
+    .right {
+      flex: 1;
+      justify-content: flex-end;
+      .search-box {
+        @include media("<=tablet") {
+          display: none;
+        }
+      }
+      .search-icon-btn {
+        border: 1px solid $themeColor;
+        padding: 12px;
+        border-radius: 6px;
+        display: none;
+        @include media("<=tablet") {
+          display: flex;
+        }
+      }
+      .action {
+        margin-left: 40px;
+        .btn-connect {
+          border: 1px solid #1d1d1f;
+          border-radius: 8px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.search-model {
+  width: 100%;
+  padding: 18px 8px;
+  height: 110px;
+  background: #ffffff;
+  .search-box {
+    .txt {
+      width: 100%;
+      min-width: 200px;
+    }
+  }
+}

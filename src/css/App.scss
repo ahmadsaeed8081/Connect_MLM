@@ -1,0 +1,56 @@
+@import "./Colors.scss";
+@import "./Props.scss";
+@import "./media.scss";
+@import "../components/Header/header-style.scss";
+@import "../components/SearchBox/search-style.scss";
+@import "../components/ConnectWallet/connectwallet.scss";
+@import "../Pages/Welcome/welcome-style.scss";
+@import "../Pages/Home/home-style.scss";
+
+.font,
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin bgImage($radius: 50%) {
+  height: 100%;
+  width: 100%;
+  border-radius: $radius;
+  background-color: #e2e2e2;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.wrapWidth {
+  padding: 0px 5%;
+  margin: 0 auto;
+  width: 100%;
+  @include media("<=xlarge") {
+    padding: 0px 5%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  @include media("<=large") {
+    width: 100%;
+    padding: 0px 3%;
+  }
+  @include media("<=desktop") {
+    width: 100%;
+    padding: 0px 3%;
+  }
+  @include media("<=tablet") {
+    width: 100%;
+    padding: 0px 3%;
+  }
+  @include media(">=phone", "<=480px") {
+    padding: 0px 5%;
+  }
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #fff;
+}
