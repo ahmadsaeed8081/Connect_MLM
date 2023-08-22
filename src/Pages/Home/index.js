@@ -294,7 +294,7 @@ console.log("object get data");
                     <div className="flex items-center">
                       <div className="info-box-title">My Link</div>
                       <CopyToClipboard
-                        text={`https://connectors-ebon.vercel.app/?ref=${userId}`}
+                        text={`https://connect-mlm.vercel.app/?ref=${userId}`}
                       >
                         <button className="copy-icon flex items-center justify-center ml-5" style={{ backgroundColor: "#161620"}}>
                           <CopyIcon />
@@ -302,7 +302,7 @@ console.log("object get data");
                       </CopyToClipboard>
                     </div>
                     <div className="info-box-title">
-                    https://connectors-ebon.vercel.app/?ref=
+                    https://connect-mlm.vercel.app/?ref=
                       {props.address == null
                         ? ""
                         : userId}
