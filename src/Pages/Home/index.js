@@ -15,9 +15,20 @@ import {
 } from "../../components/config";
 import { CopyIcon} from "../../icons";
 
+import { useNetwork, useSwitchNetwork } from "wagmi";
+import {
+  useContractReads,
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
 
 const Home = (props) => {
 
+  const networkId=80001;
+
+  const level_fee=[20000000,20000000,20000000,20000000,20000000,30000000,40000000,50000000];
 
   useEffect(() => {
     getData();
@@ -38,6 +49,8 @@ const Home = (props) => {
   const [TotalTeam, set_TotalTeam] = useState("");
   const [uplinerId, set_uplinerId] = useState("");
   const [uplinerAdd, set_uplinerAdd] = useState("");
+  const [choosen_level, set_choosen_level] = useState("");
+  const { chain } = useNetwork();
 
   const [userId, set_userId] = useState("");
   const [is_paid, set_paid] = useState(false);
@@ -65,8 +78,59 @@ const Home = (props) => {
 
 
 
+  const { config: appConfig } = usePrepareContractWrite({
+    address: Token_address,
+    abi: tokenABI,
+    functionName: "approve",
+    args: [cont_address,level_fee[choosen_level]],
+  });
+
+  const {
+    data: data_app,
+    isLoading: isLoading_app,
+    isSuccess: isSuccess_app,
+    write: approval,
+  } = useContractWrite(appConfig);
 
 
+
+  const {
+    data: stakeResult,
+    isLoading: isLoading_stake,
+    isSuccess: stakeSuccess,
+    write: registration,
+  } = useContractWrite({
+    address: cont_address,
+    abi: cont_abi,
+    functionName: "unlock_other_Level",
+    args: [choosen_level],
+    onSuccess(data) {
+      getData();
+      console.log("Success", data);
+    },
+  });
+
+  const waitForTransaction = useWaitForTransaction({
+    hash: data_app?.hash,
+    onSuccess(data) {
+      // alert("its run")
+      registration?.();
+      console.log("Success", data);
+    },
+  });
+  const waitForTransaction2 = useWaitForTransaction({
+    hash: stakeResult?.hash,
+    onSuccess(data) {
+getData?.();
+
+    },
+  });
+  const { switchNetwork: stake_switch } = useSwitchNetwork({
+    chainId: networkId,
+    onSuccess() {
+      approval?.();
+    },
+  });
 
 
 
@@ -202,6 +266,9 @@ console.log("object get data");
   }
 
 
+
+
+
   async function update_data() 
   {
     console.log("object update data");
@@ -219,10 +286,29 @@ console.log("object get data");
 
   }
 
+async function unlock_level(level) 
+{
+  set_choosen_level(level);
+
+  if(refLock_data1[level-1]==false)
+  {
+    alert("you have to unlock the previous level first");
+    return;
+  }
+  if(props.balance <level_fee[level]/10**6)
+  {
+    alert("You dont have enough balance to unlock this package");
+    return;
+  }
+  if (chain.id != networkId) {
+    stake_switch?.();
+  } else {
+    approval?.();
+  } 
 
 
 
-
+}
 
 
 
@@ -261,8 +347,8 @@ console.log("object get data");
                   <div className="info-box-number">{totalMatic}</div>
                 </div>
                 <div className="info-box-right flex flex-col">
-                  <div className="info-box-title mb-2">Total Dai</div>
-                  <div className="info-box-number">0.00</div>
+                  <div className="info-box-title mb-2">Total USDT</div>
+                  <div className="info-box-number">{props.balance}</div>
                 </div>
               </div>
 
@@ -379,7 +465,7 @@ console.log("object get data");
                     {refLock_data1[index] ?("")
                     :(
                         <div className="btn-connect button" style={{ borderRadius: 10 }} 
-                        // onClick={unlock_level(index)}
+                        onClick={()=>unlock_level(index)}
                         >
                           Locked
                         </div>

@@ -6,6 +6,14 @@ import ProtectedRoute from "./Routing/ProtectedRoute";
 import Home from "./Pages/Home";
 import Welcome from "./Pages/Welcome";
 
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/react'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
+import { polygonMumbai} from 'wagmi/chains'
+import { infuraProvider } from 'wagmi/providers/infura'
+import { alchemyProvider } from 'wagmi/providers/alchemy'
+import Web3 from "web3";
+
 function App() {
 
   const [address, set_address] = useState(null);
@@ -43,8 +51,22 @@ function App() {
     // console.log("ihjono " + address);
   }
 
+
+  const chains = [polygonMumbai]
+  const projectId = '9dc66ab4d76b28b1a452d5dc0083e466'
+  
+  const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
+  const wagmiConfig = createConfig({
+    autoConnect: true,
+    connectors: w3mConnectors({ projectId, chains }),
+    publicClient
+  })
+  const ethereumClient = new EthereumClient(wagmiConfig, chains)
+
   return (
     <div className="App">
+          <WagmiConfig config={wagmiConfig}>
+
       <BrowserRouter>
         <Routes>
           <Route
@@ -84,6 +106,10 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+
+      </WagmiConfig>
+
+<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </div>
   );
 }
