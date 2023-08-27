@@ -1,4 +1,4 @@
-export const cont_address= "0x44d926B8e92109Aea32920f29d36D87C79dE3CD0";
+export const cont_address= "0x26BEeCe15aE5618929fc75Cf703357f2615D8F0b";
 export const Token_address= "0x341343568948459e5b7017eDDb05110cfA3EF699"; //test usdt
 
 export const cont_abi=[
