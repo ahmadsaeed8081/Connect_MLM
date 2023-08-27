@@ -583,7 +583,7 @@ else{
                   }}
                 />
                 {/* <Link to="/home"> */}
-                  {/* <button className="btn-connect button w-full"
+                  <button className="btn-connect button w-full"
                     onClick={(e) =>{ 
                       if(uplinerID!=null && uplinerID!="")
                       {
@@ -596,7 +596,7 @@ else{
                         }}>
 
                     Connect Wallet To Sign Up Now
-                  </button> */}
+                  </button>
 
 
 
