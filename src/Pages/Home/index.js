@@ -26,9 +26,9 @@ import {
 
 const Home = (props) => {
 
-  const networkId=80001;
+  const networkId=137;
 
-  const level_fee=[20000000,20000000,20000000,20000000,20000000,30000000,40000000,50000000];
+  // const level_fee=[20000000,20000000,20000000,20000000,20000000,30000000,40000000,50000000];
 
   useEffect(() => {
     getData();
@@ -43,6 +43,8 @@ const Home = (props) => {
     earning: "",
     team: "",
   });
+
+  const [level_fee, set_level_fee] = useState([20000000,20000000,20000000,20000000,20000000,30000000,40000000,50000000]);
 
   const [total_earning, set_total_earning] = useState("");
   const [TotalDirects, set_TotalDirects] = useState("");

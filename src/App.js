@@ -9,7 +9,7 @@ import Welcome from "./Pages/Welcome";
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
-import { polygonMumbai} from 'wagmi/chains'
+import { polygon} from 'wagmi/chains'
 import { infuraProvider } from 'wagmi/providers/infura'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import Web3 from "web3";
@@ -52,11 +52,19 @@ function App() {
   }
 
 
-  const chains = [polygonMumbai]
-  const projectId = '9dc66ab4d76b28b1a452d5dc0083e466'
+  const chains = [polygon]
+  const projectId = 'a4d2f508402063820567e328e758d3ef'
   
   const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
-  const wagmiConfig = createConfig({
+
+
+  // const { chains, publicClient } = configureChains(
+  //   [polygonMumbai],
+  //   [alchemyProvider({ apiKey: 'https://polygon-mumbai.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh' })],
+  // )
+
+
+    const wagmiConfig = createConfig({
     autoConnect: true,
     connectors: w3mConnectors({ projectId, chains }),
     publicClient

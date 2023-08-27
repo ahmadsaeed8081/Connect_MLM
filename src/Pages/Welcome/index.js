@@ -24,7 +24,7 @@ import { useAccount} from "wagmi";
 
 
 const Welcome = (props) => {
-  const networkId=80001;
+  const networkId=137;
 
   const { chain } = useNetwork();
 
@@ -115,7 +115,7 @@ const Welcome = (props) => {
     functionName: "registration",
     args: [ref,newId],
     onSuccess(data) {
-      test();
+      Connect_Wallet();
       console.log("Success", data);
     },
   });
@@ -159,7 +159,7 @@ const Welcome = (props) => {
 
       //metmask
       // open();
-      provider = "https://polygon-mumbai-bor.publicnode.com";
+      provider = "https://polygon.meowrpc.com";
 
       web3 = new Web3(provider);
       // const networkId = await web3.eth.net.getId();
@@ -258,7 +258,7 @@ const Welcome = (props) => {
 
             reg_fee = reg_fee * 10 ** 6;
             console.log(typeof reg_fee + "   " + reg_fee);
-            console.log("this is ref1 " + _ref);
+            console.log("this is ref1 " + chain.id+" dff "+ networkId);
 
 
 
@@ -268,6 +268,7 @@ const Welcome = (props) => {
             } 
             else 
             {
+              // registration?.();
               approval?.();
             }      
 
