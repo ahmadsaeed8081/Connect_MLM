@@ -382,7 +382,7 @@ async function unlock_level(level)
                     <div className="flex items-center">
                       <div className="info-box-title">My Link</div>
                       <CopyToClipboard
-                        text={`https://connect-mlm.vercel.app/?ref=${userId}`}
+                        text={`https://wowusdt.online/?ref=${userId}`}
                       >
                         <button className="copy-icon flex items-center justify-center ml-5" style={{ backgroundColor: "#161620"}}>
                           <CopyIcon />
@@ -390,7 +390,7 @@ async function unlock_level(level)
                       </CopyToClipboard>
                     </div>
                     <div className="info-box-title">
-                    https://connect-mlm.vercel.app/?ref=
+                    https://wowusdt.online/?ref=
                       {props.address == null
                         ? ""
                         : userId}
@@ -469,7 +469,12 @@ async function unlock_level(level)
                         <div className="btn-connect button" style={{ borderRadius: 10 }} 
                         onClick={()=>unlock_level(index)}
                         >
-                          Locked
+                         {index==4?<span style={{ fontSize:12 }}> 20$ to Unlocked</span>:null} 
+                         {index==5?<span style={{ fontSize:12 }}> 30$ to Unlocked</span>:null} 
+
+                         {index==6?<span style={{ fontSize:12 }}> 40$ to Unlocked</span>:null} 
+                         {index==7?<span style={{ fontSize:12 }}> 50$ to Unlocked</span>:null} 
+
                         </div>
                     )}
 

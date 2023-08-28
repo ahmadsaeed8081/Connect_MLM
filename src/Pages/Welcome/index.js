@@ -486,7 +486,7 @@ else{
       <div className="wrap warpWidth flex items-center justify-center">
         {tab === "1" ? (
           <div className="wrap-box flex flex-col">
-            <div className="box-title">Welcome To Connectors</div>
+            <div className="box-title">Welcome To WOW USDT</div>
             <div className="box-desc">
               Do you already have a profile with us?
             </div>
@@ -542,7 +542,7 @@ else{
                 <ArrowBackIcon />
               </div>
             </div>
-            <div className="box-title">Registering For Connectors</div>
+            <div className="box-title">Registering For WOW USDT</div>
             <div className="box-desc">Do you already have an Upline?</div>
             <div className="wrap-block">
               <div

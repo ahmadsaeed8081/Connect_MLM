@@ -72,11 +72,11 @@ const Header = (props) => {
 
 
   return (
-    <div className="header-camp flex">
-      <div className="wrapWidth wrap flex items-center">
+    <div className="header-camp flex" style={{ backgroundColor: "#121212" }}>
+      <div className="wrapWidth wrap flex items-center" >
         <div className="left flex items-center">
           <Link to="/">
-            <img src="./images/logo.svg" className="logo-img" />
+          <img style={{ height :80, width : 80}} src="./images/logo.png" className="logo-img" />
           </Link>
         </div>
         <div className="right flex items-center">
