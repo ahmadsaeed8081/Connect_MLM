@@ -68,7 +68,7 @@ const Welcome = (props) => {
   useEffect(() => {
     if(isConnected)
     {
-      Connect_Wallet()
+      Connect_Wallet(-1)
 
     }
     if(params!=null)
@@ -115,7 +115,7 @@ const Welcome = (props) => {
     functionName: "registration",
     args: [ref,newId],
     onSuccess(data) {
-      Connect_Wallet();
+      Connect_Wallet(0);
       console.log("Success", data);
     },
   });
@@ -144,15 +144,15 @@ const Welcome = (props) => {
     },
   });
 
-  async function Connect_Wallet() {
+  async function Connect_Wallet(val) {
     let provider;
     let web3;
     let accounts;
 
 
 
-    const NETWORK_ID = "80001";
-    const NETWORK_ID_hex = "0x13881";
+    const NETWORK_ID = "137";
+    const NETWORK_ID_hex = "0x89";
 
 
 
@@ -203,7 +203,11 @@ const Welcome = (props) => {
             navigate("/home");
           }
           else{
-            alert("You are not a register member")
+            if(val==0)
+            {
+              alert("You are not a register member")
+
+            }
             return
           }
 
@@ -448,7 +452,7 @@ const Welcome = (props) => {
     // localStorage.setItem("token", true);
 if(isConnected)
 {
-        Connect_Wallet()
+        Connect_Wallet(0)
 
 }
 else{
@@ -486,7 +490,7 @@ else{
       <div className="wrap warpWidth flex items-center justify-center">
         {tab === "1" ? (
           <div className="wrap-box flex flex-col">
-            <div className="box-title">Welcome To WOW USDT</div>
+            <div className="box-title">Welcome To <span style={{fontSize: 30 , fontWeight: 800, color:"gold" , fontStyle:"italic"}}>WOW USDT</span></div>
             <div className="box-desc">
               Do you already have a profile with us?
             </div>
